@@ -10,4 +10,6 @@ hide:
 
 # Open-Source Software 🧬
 
-Bioinformatics tools, genomic surveillance pipelines, and high-performance Python/Rust libraries I've built or lead.
+Bioinformatics command-line tools, genomic surveillance pipelines, and high-performance Python and Rust libraries that I have built or lead as part of my research in bacterial genomics and antimicrobial resistance.
+
+Explore individual project pages below, including [Kaptive 3](kaptive.md), [SideroScanner](sideroscanner.md), [pyfgs](pyfgs.md), [bart](bart.md), [rammappy](rammappy.md), and [eris](eris.md), or browse related peer-reviewed articles on the [Publications](../bib.md) page.

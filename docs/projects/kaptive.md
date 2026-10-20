@@ -29,3 +29,5 @@ Originally created for *Klebsiella pneumoniae* and *Acinetobacter baumannii*, **
 ## Citation
 
 > **Stanton TD**, Hetland MAK, Löhr IH, Holt KE, Wyres KL. Fast and accurate in silico antigen typing with Kaptive 3. *Microbial Genomics*. 2025;11(6). [DOI: 10.1099/mgen.0.001428](https://doi.org/10.1099/mgen.0.001428)
+
+[← Back to all Software](index.md)

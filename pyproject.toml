@@ -5,6 +5,29 @@ description = "Bytes and Bacteria — Tom Stanton's personal website & blog, bui
 requires-python = ">=3.11"
 dependencies = [
     "pillow>=11.0.0",
+    "pre-commit>=4.0.0",
     "pyyaml>=6.0.0",
     "zensical>=0.0.71",
+    "zenzic>=0.30.0",
 ]
+
+[tool.zenzic]
+docs_dir = "docs"
+strict = false
+fail_under = 95
+placeholder_max_words = 20
+excluded_assets = ["logo.png", "assets/logo.png", "social/**", "assets/social/**"]
+
+[tool.zenzic.build_context]
+engine = "zensical"
+base_url = "/"
+default_locale = "en"
+
+[tool.zenzic.governance]
+suppression_cap = 30
+suppression_cap_fail_hard = true
+brand_obsolescence = []
+
+# Zensical's awesome-nav (.nav.yml) and blog plugins wire navigation dynamically
+[tool.zenzic.governance.directory_policies]
+"**" = ["Z410", "Z411"]

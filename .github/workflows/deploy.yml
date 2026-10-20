@@ -37,6 +37,9 @@ jobs:
       - name: Generate Social Preview Cards
         run: uv run --locked python scripts/social_cards.py
 
+      - name: Audit Documentation (Zenzic)
+        run: uv run --locked zenzic check all
+
       - name: Build Site (Strict)
         run: uv run --locked zensical build --strict
 

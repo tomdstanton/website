@@ -20,3 +20,5 @@ tags:
 
 - **Zero Subprocess Overhead:** Predict ORFs directly from Python strings or sequence objects in memory without writing temporary FASTA files or spawning shell processes.
 - **Rust Speed:** Leverages native Rust performance and multithreading for rapid gene calling across fragmented assemblies or reads.
+
+[← Back to all Software](index.md)

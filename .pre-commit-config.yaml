@@ -1,9 +1,15 @@
 repos:
-- repo: local
-  hooks:
-  - id: zenzic-check
-    name: Zenzic Audit
-    entry: uvx zenzic check all
-    language: system
-    pass_filenames: false
-    files: \.(md|toml)$
+  - repo: local
+    hooks:
+      - id: zenzic-check
+        name: Zenzic Audit
+        entry: uv run zenzic check all
+        language: system
+        pass_filenames: false
+        files: \.(md|toml)$
+      - id: zensical-build-strict
+        name: Zensical Build (Strict)
+        entry: uv run zensical build --strict
+        language: system
+        pass_filenames: false
+        files: \.(md|toml|yml|yaml|html|css|js)$

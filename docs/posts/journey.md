@@ -30,11 +30,9 @@ Considering the area, I was lucky enough to have some really excellent science t
 the longest serving member of staff at the school, teaching science from 1993-2024! I was convinced to study Biology, Chemistry, 
 English Literature and Computer Science at A-level and briefly moved to Salisbury, England, where I won a place at 
 Bishop Wordsworth's School. Here, I was a member of 
-[The British Association of Young Scientists](https://www.britishscienceassociation.org/), and because of our proximity to
-Public Health England (currently UKHSA) Porton Down, we were lucky enough to have a scientist (sorry I can't remember your name!)
-from the [Vaccine Development and Evaluation Centre](https://www.gov.uk/guidance/ukhsas-vaccine-development-and-evaluation-centre-vdec) 
-come and speak to us about how they were developing tools to reduce 
-antimicrobial resistance to tuberculosis (TB). This short talk connected all the dots for me - from that point I was 
+[The British Association of Young Scientists](https://www.britishscienceassociation.org/) near Public Health England (currently UKHSA) Porton Down.
+Because of our proximity, we were lucky enough to have a scientist from the [Vaccine Development and Evaluation Centre](https://www.gov.uk/guidance/ukhsas-vaccine-development-and-evaluation-centre-vdec) 
+speak to us about developing tools to reduce antimicrobial resistance in tuberculosis (TB). This short talk connected all the dots for me - from that point I was 
 pretty convinced I wanted to do the same thing.
 
 ## :lucide-graduation-cap: 2012
@@ -50,7 +48,7 @@ I rocked up to a microbiology lecture at some point in my second year, taught by
 [Michael Hornsey](https://uk.linkedin.com/in/mikerobiologist)
 who was talking about the evolution of antimicrobial resistance in bacteria, and again, I was hooked.
 Turns out Mike (another Margate lad) was accepting students for honours projects based on his latest work on _A. baumannii_
-tigecycline resistance with David Wareham (see Nat Comms paper[^1]) and after an email, he let me approach the project with my
+tigecycline resistance with David Wareham (see Nat Comms paper[^1]). After an email, he let me approach the project with my
 own idea. After we knew that efflux pumps were responsible for reduced susceptibility to tigecycline, I wanted to grow 
 _A. baumannii_ under tigecycline pressure in the presence of an efflux inhibitor to find
 any other intrinsic mechanisms contributing to resistance.
@@ -68,7 +66,7 @@ collecting and testing isolates from participating NHS hospitals, and performing
 rates in bacteria causing respiratory and bloodstream infections. 
 
 However, living in London is expensive and I was still deeply curious about
-microbial bioinformatics, so I successfully leveraged my skills into a new role in the Genomics Services and Development Unit, performing
+microbial bioinformatics. I successfully leveraged my skills into a new role in the Genomics Services and Development Unit, performing
 Illumina short-read whole genome sequencing on priority pathogens sent to the UKHSA.
 
 As much as I loved my time at UKHSA, and my social life in London (which had become my spiritual home), my scientific curiosity still 
@@ -94,10 +92,9 @@ ask any research question I wanted to, but I could answer it **by myself**! for 
 ## :lucide-rocket: 2021
 
 A. Prof Kelly Wyres advertised a postdoc position on the platform formerly known as Twitter, looking at genomic
-sero-epidemiology of _K. pneumoniae_. I slid in the DMs (networking pays off!), and the rest is history!
+sero-epidemiology of _K. pneumoniae_. I slid in the DMs (networking pays off!), and the rest is history! Today I lead tools like [Kaptive 3](../projects/kaptive.md) and publish open-source research listed on my [Publications](../bib.md) and [About](../about.md) pages.
 
 ## References 📚
 
-[^1]: [Hornsey, M., Wareham, D.W. Effects of In vivo Emergent Tigecycline 
-    Resistance on the Pathogenic Potential of Acinetobacter baumannii. *Sci Rep* 8, 
-    4234 (2018).](https://doi.org/10.1038/s41598-018-22549-6)
+[^1]:
+    [Hornsey, M., Wareham, D.W. Effects of In vivo Emergent Tigecycline Resistance on the Pathogenic Potential of Acinetobacter baumannii. *Sci Rep* 8, 4234 (2018).](https://doi.org/10.1038/s41598-018-22549-6)
