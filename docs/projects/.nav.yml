@@ -1,0 +1,10 @@
+# Sidebar order. awesome-nav keeps this in sync with project `weight` (lowest first).
+append_unmatched: true
+nav:
+  - index.md
+  - kaptive.md
+  - sideroscanner.md
+  - pyfgs.md
+  - bart.md
+  - rammappy.md
+  - eris.md

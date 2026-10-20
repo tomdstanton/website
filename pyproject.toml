@@ -1,0 +1,10 @@
+[project]
+name = "website"
+version = "0.1.0"
+description = "Bytes and Bacteria — Tom Stanton's personal website & blog, built with Zensical"
+requires-python = ">=3.11"
+dependencies = [
+    "pillow>=11.0.0",
+    "pyyaml>=6.0.0",
+    "zensical>=0.0.71",
+]

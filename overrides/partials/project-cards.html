@@ -1,0 +1,39 @@
+{#-
+  Project cards grid.
+  Pass `projects`: a list of nav pages whose front matter defines:
+    title        card heading, links to the project page
+    description  card summary
+    icon         optional icon or emoji badge
+    tags         optional list of topic tags
+    github_url   optional; adds repository link and live star count
+    pypi         optional; adds PyPI package link
+    docs_url     optional; adds documentation link
+-#}
+<div class="grid cards project-cards-grid">
+  <ul>
+    {% for project in projects %}
+      <li class="project-card-item">
+        <div class="project-card-header">
+          <a href="{{ project.url | url }}" class="project-card-title">
+            <strong>{{ project.title }}</strong>
+          </a>
+          {% if project.meta and project.meta.language %}
+            <span class="project-lang-badge">{{ project.meta.language }}</span>
+          {% endif %}
+        </div>
+        <hr>
+        <p class="project-card-desc">{{ project.meta.description }}</p>
+        {% if project.meta and project.meta.tags %}
+          <div class="project-card-tags">
+            {% for tag in project.meta.tags[:4] %}
+              <span class="project-tag-pill">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <div class="project-card-footer">
+          {% include "partials/project-links.html" %}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

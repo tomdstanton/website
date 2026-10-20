@@ -1,116 +1,151 @@
 [project]
 site_name = "Bytes and Bacteria"
-site_description = "Yet another microbinfie blog"
-site_url = "https://tomdstanton.github.io/tomdstanton/"
-repo_url = "https://github.com/tomdstanton/tomdstanton"
-repo_name = "tomdstanton/tomdstanton"
+site_description = "Microbial bioinformatics, genomics & open-source software by Tom Stanton"
+site_url = "https://tomdstanton.com/"
 site_author = "Tom Stanton"
-edit_uri = "edit/master/docs/"
+repo_url = "https://github.com/tomdstanton/website"
+repo_name = "tomdstanton/website"
+edit_uri = "edit/main/docs/"
 docs_dir = "docs"
 site_dir = "site"
-copyright = """
-Copyright &copy; 2026 <a href="https://tomdstanton.com" target="_blank">Tom Stanton</a>
-"""
+copyright = 'Copyright &copy; 2026 <a href="https://tomdstanton.com" target="_blank" rel="noopener">Tom Stanton</a> • Built with Zensical'
 extra_css = ["stylesheets/extra.css"]
-nav = [
-    { "Home" = "index.md" },
-    { "Blog Posts" = [
-        { "The Journey So Far" = "posts/journey.md" },
-        { "You like 'Huey Lewis and the News?" = "posts/soas.md" }
-    ]},
-    { "Bibliography" = "bib.md" },
-]
-plugins = [
-    "search",
-    { reading-time = { words_per_minute = 200 } },
-    "include-markdown",
-    "offline",
-]
 extra_javascript = [
-    "javascripts/mathjax.js",
-    "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js",
+  "javascripts/github-stars.js",
+  "javascripts/mathjax.js",
+  "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js",
 ]
 
 [project.theme]
-name = "material"
-custom_dir = "docs/overrides"
+custom_dir = "overrides"
+language = "en"
 logo = "assets/logo.png"
 favicon = "assets/logo.png"
-language = "en"
+font.text = "Manrope"
+font.code = "IBM Plex Mono"
+icon.repo = "fontawesome/brands/github"
 features = [
-    "announce.dismiss",
-    "content.action.edit",
-    "content.code.annotate",
-    "content.code.copy",
-    "content.code.select",
-    "content.footnote.tooltips",
-    "header.autohide",
-    "navigation.top",
-    "navigation.footer",
-    "navigation.tabs",
-    "navigation.tabs.sticky",
-    "navigation.tracking",
-    # "navigation.sections",
-    # "navigation.expand",
-    "navigation.instant",
-    "navigation.instant.progress",
-    "navigation.path",
-    "search.suggest",
-    "search.highlight",
-    "search.share",
-    "toc.follow",
-    # "toc.integrate",
+  "announce.dismiss",
+  "content.action.edit",
+  "content.action.view",
+  "content.code.annotate",
+  "content.code.copy",
+  "content.code.select",
+  "content.footnote.tooltips",
+  "content.tabs.link",
+  "header.autohide",
+  "navigation.footer",
+  "navigation.indexes",
+  "navigation.instant",
+  "navigation.instant.prefetch",
+  "navigation.instant.progress",
+  "navigation.tabs",
+  "navigation.tabs.sticky",
+  "navigation.top",
+  "navigation.tracking",
+  "search.highlight",
+  "search.share",
+  "search.suggest",
+  "toc.follow",
+  "toc.integrate",
 ]
 
-[project.theme.font]
-text = "Manrope"
-code = "IBM Plex Mono"
-
-[project.theme.icon]
-repo = "fontawesome/brands/github"
-# logo = "lucide/dna"
-
+# Dark by default, with a toggle to light and system preference
 [[project.theme.palette]]
-media = "(prefers-color-scheme)"
-primary = "custom"
-accent = "custom"
-toggle.icon = "lucide/sun-moon"
-toggle.name = "Use light mode"
-
-[[project.theme.palette]]
-media = "(prefers-color-scheme: light)"
-primary = "custom"
-accent = "custom"
-scheme = "default"
-toggle.icon = "lucide/sun"
-toggle.name = "Use dark mode"
-
-[[project.theme.palette]]
-media = "(prefers-color-scheme: dark)"
-primary = "custom"
-accent = "custom"
 scheme = "slate"
+primary = "custom"
+accent = "custom"
 toggle.icon = "lucide/moon"
-toggle.name = "Use system preference"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+scheme = "default"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
 
 [project.extra]
-social = [
-    { icon = "lucide/mail", link = "mailto:tomdstanton@gmail.com" },
-]
 generator = false
 
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/tomdstanton"
+name = "GitHub"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/bluesky"
+link = "https://bsky.app/profile/tomstantonmicro"
+name = "Bluesky"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/linkedin"
+link = "https://linkedin.com/in/tomdstanton"
+name = "LinkedIn"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/x-twitter"
+link = "https://x.com/tomstantonmicro"
+name = "X (Twitter)"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/strava"
+link = "https://www.strava.com/athletes/38105733"
+name = "Strava"
+
+[[project.extra.social]]
+icon = "lucide/mail"
+link = "mailto:tomdstanton@gmail.com"
+name = "Email"
+
+[[project.extra.social]]
+icon = "fontawesome/solid/rss"
+link = "/feed_rss_created.xml"
+name = "RSS Feed"
+
+[project.extra.giscus]
+repo = "tomdstanton/website"
+repo_id = "R_kgDOTcEEsg"
+category = "Announcements"
+category_id = "DIC_kwDOTcEEss4DBc2X"
+
+# The blog lives at the site root; posts get clean /blog/<slug>/ URLs.
+[project.plugins.blog]
+blog_dir = "."
+post_url_format = "blog/{slug}"
+pagination_per_page = 5
+authors_file = "{blog}/.authors.yml"
+
+[project.plugins.tags]
+
+[project.plugins.rss]
+match_path = "posts/.*"
+date_from_meta.as_creation = "date.created"
+
+[project.plugins.meta]
+
+[project.plugins.awesome-nav]
+
+[project.plugins.glightbox]
+
 [project.markdown_extensions]
+abbr = {}
 admonition = {}
 attr_list = {}
+def_list = {}
 footnotes = {}
 md_in_html = {}
 toc = { permalink = true, title = "On this page" }
 "pymdownx.arithmatex" = { generic = true }
+"pymdownx.betterem" = {}
 "pymdownx.details" = {}
 "pymdownx.emoji" = { emoji_index = "zensical.extensions.emoji.twemoji", emoji_generator = "zensical.extensions.emoji.to_svg" }
-"pymdownx.highlight" = { anchor_linenums = true, use_pygments = true, linenums = true, auto_title = true }
+"pymdownx.highlight" = { anchor_linenums = true, line_spans = "__span", pygments_lang_class = true, auto_title = true }
 "pymdownx.inlinehilite" = {}
-"pymdownx.snippets" = { base_path = ["."] }
+"pymdownx.keys" = {}
+"pymdownx.magiclink" = {}
+"pymdownx.smartsymbols" = {}
+"pymdownx.snippets" = { base_path = ["."], check_paths = true }
 "pymdownx.superfences" = { custom_fences = [ { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" } ] }
 "pymdownx.tabbed" = { alternate_style = true }
-"zensical.extensions.glightbox" = {}
+"pymdownx.tasklist" = { custom_checkbox = true }

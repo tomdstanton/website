@@ -1,0 +1,31 @@
+{#-
+  Links for a project (`project`):
+  - GitHub repository with live star count (filled client-side by javascripts/github-stars.js)
+  - PyPI package link (`pypi` in front matter)
+  - Documentation link (`docs_url` in front matter)
+-#}
+<div class="project-links-row">
+  {% if project.meta.github_url %}
+    {% set repo = project.meta.github_url | replace("https://github.com/", "") %}
+    <span class="project-link-item">
+      <span class="twemoji">{% include ".icons/fontawesome/brands/github.svg" %}</span>
+      <a href="{{ project.meta.github_url }}" target="_blank" rel="noopener" title="{{ repo }} on GitHub">{{ repo }}</a>
+      <span class="github-stars-pill" data-github-stars="{{ repo }}" hidden>
+        <span class="twemoji">{% include ".icons/octicons/star-16.svg" %}</span>
+        <span></span>
+      </span>
+    </span>
+  {% endif %}
+  {% if project.meta.pypi %}
+    <span class="project-link-item">
+      <span class="twemoji">{% include ".icons/fontawesome/brands/python.svg" %}</span>
+      <a href="https://pypi.org/project/{{ project.meta.pypi }}/" target="_blank" rel="noopener">PyPI</a>
+    </span>
+  {% endif %}
+  {% if project.meta.docs_url %}
+    <span class="project-link-item">
+      <span class="twemoji">{% include ".icons/lucide/book-open.svg" %}</span>
+      <a href="{{ project.meta.docs_url }}" target="_blank" rel="noopener">Docs</a>
+    </span>
+  {% endif %}
+</div>

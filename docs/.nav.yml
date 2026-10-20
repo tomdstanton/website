@@ -1,0 +1,7 @@
+append_unmatched: true
+nav:
+  - index.md
+  - projects
+  - bib.md
+  - tags.md
+  - about.md

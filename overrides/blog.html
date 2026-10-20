@@ -1,0 +1,45 @@
+{#-
+  Home / Blog index template:
+  Renders the hero intro (`page.content`), the latest blog posts feed,
+  and the top 3 Featured Software Projects (by `weight`) on the first page.
+-#}
+{% extends "main.html" %}
+{% block container %}
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <a id="__skip" tabindex="-1"></a>
+        {{ page.content }}
+      </header>
+      {% if not page.url %}
+        <div class="md-typeset home-section-header">
+          <span class="section-eyebrow">Writing & Notes</span>
+          <h2>Latest Posts</h2>
+        </div>
+      {% endif %}
+      {% for post in posts %}
+        {% include "partials/post.html" %}
+      {% endfor %}
+      {% if pagination %}
+        {% block pagination %}
+          {% include "partials/pagination.html" %}
+        {% endblock %}
+      {% endif %}
+      {% if not page.url %}
+        {% for item in nav.items if item.children and item.children[0].url == "projects/" %}
+          {% set projects = (item.children | rejectattr("is_index") | sort(attribute="meta.weight"))[:3] %}
+          <section class="md-typeset featured-projects-section">
+            <div class="home-section-header">
+              <span class="section-eyebrow">Open Source Bioinformatics</span>
+              <h2>Featured Software</h2>
+            </div>
+            {% include "partials/project-cards.html" %}
+            <p class="featured-projects-more">
+              <a href="{{ 'projects/' | url }}" class="md-button">Explore all software & projects →</a>
+            </p>
+          </section>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

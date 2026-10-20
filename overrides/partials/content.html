@@ -1,0 +1,19 @@
+{#-
+  Copy of the built-in partials/content.html that adds project links
+  (GitHub repository, PyPI, Docs) to project pages that set them in front matter.
+-#}
+{% include "partials/actions.html" %}
+{% if "<h1" not in page.content %}
+  <h1 id="__skip">{{ page.title | d(config.site_name, true)}}</h1>
+{% endif %}
+{% if page.meta and (page.meta.github_url or page.meta.pypi or page.meta.docs_url) %}
+  {% set project = page %}
+  <div class="project-page-banner">
+    {% include "partials/project-links.html" %}
+  </div>
+{% endif %}
+{{ page.content }}
+{% include "partials/tags.html" %}
+{% include "partials/source-file.html" %}
+{% include "partials/feedback.html" %}
+{% include "partials/comments.html" %}

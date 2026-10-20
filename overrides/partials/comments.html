@@ -1,0 +1,53 @@
+{#-
+  Giscus comments, configured via `[project.extra.giscus]` in zensical.toml,
+  with theme synchronized to the light/dark palette toggle.
+-#}
+{% if page.meta.comments %}
+  {% set giscus = config.extra.giscus %}
+  <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="{{ giscus.repo }}"
+    data-repo-id="{{ giscus.repo_id }}"
+    data-category="{{ giscus.category }}"
+    data-category-id="{{ giscus.category_id }}"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="transparent_dark"
+    data-lang="en"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async
+  >
+  </script>
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+    var theme = function(palette) {
+      return palette.color.scheme === "slate" ? "transparent_dark" : "light"
+    }
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      giscus.setAttribute("data-theme", theme(palette))
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      if (ref) {
+        ref.addEventListener("change", function() {
+          var palette = __md_get("__palette")
+          if (palette && typeof palette.color === "object") {
+            var frame = document.querySelector(".giscus-frame")
+            if (frame && frame.contentWindow) {
+              frame.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: theme(palette) } } },
+                "https://giscus.app"
+              )
+            }
+          }
+        })
+      }
+    })
+  </script>
+{% endif %}

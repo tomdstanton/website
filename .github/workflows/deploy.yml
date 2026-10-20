@@ -1,38 +1,62 @@
 name: Deploy Blog
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Weekly sync of OpenAlex publications & citation counts (Sundays 00:00 UTC)
+    - cron: "0 0 * * 0"
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
 concurrency:
-  group: "pages"
+  group: "pages-${{ github.ref }}"
   cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
-      - name: Build
-        run: |
-          uv run scripts/fetch_bib.py
-          uvx zensical build
+
+      - name: Sync OpenAlex Publications
+        run: uv run --locked python scripts/fetch_bib.py
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+
+      - name: Generate Social Preview Cards
+        run: uv run --locked python scripts/social_cards.py
+
+      - name: Build Site (Strict)
+        run: uv run --locked zensical build --strict
+
       - name: Custom Domain
         run: echo "tomdstanton.com" > site/CNAME
-      - uses: actions/upload-pages-artifact@v3
+
+      - name: Upload Pages Artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: 'site'
+          path: site
+
   deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
