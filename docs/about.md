@@ -1,75 +1,59 @@
 ---
 title: About
-description: About Tom Stanton — Microbial Bioinformatician, Research Fellow at Monash University, and open-source developer.
-icon: lucide/user
+description: Tom Stanton — Research Fellow in Microbial Bioinformatics at Monash University and open-source developer.
 ---
 
-# Hi, I'm Tom 👋
+# Tom Stanton
 
-I'm a **Research Fellow in Microbial Bioinformatics** in the [Wyres Lab](https://wyreslab.com) at Monash University (Melbourne, Australia). I started out as a wet-lab molecular microbiologist at **UKHSA** (formerly Public Health England) and completed my PhD at the **University of Edinburgh** before moving full-time into computational biology.
+I am a **Research Fellow in Microbial Bioinformatics** in the [Wyres Lab](https://wyreslab.com) at Monash University in Melbourne, Australia. Trained originally as a wet-lab molecular microbiologist at the **UK Health Security Agency (UKHSA)** before completing my PhD at the **University of Edinburgh**, my work sits at the intersection of bacterial genetics, evolutionary epidemiology, and systems programming.
 
-Read more about my path from wet-lab agar dilution MICs to computational genomics in [How I got to where I am now 🔬](posts/journey.md).
+For the longer narrative from coastal England and clinical reference laboratories to computational biology, read [How I got to where I am now](posts/journey.md).
 
----
+## Research & Engineering Focus
 
-## 🔬 What I Work On
-
-<div class="grid cards" markdown>
-
--   :lucide-dna: **In Silico Serotyping & Surface Antigens**
-
-    ---
-
-    Lead developer of [Kaptive](projects/kaptive.md), a tool and curated database ecosystem for rapid *in silico* typing of bacterial surface polysaccharides (K and O antigens) in *Klebsiella pneumoniae*, *Acinetobacter baumannii*, and beyond.
-
--   :lucide-shield-alert: **Antimicrobial Resistance (AMR) & Virulence**
-
-    ---
-
-    Investigating the evolutionary dynamics, iron-uptake receptors ([SideroScanner](projects/sideroscanner.md)), plasmid defense systems, and genetic determinants of hypervirulence and last-line antibiotic resistance (such as cefiderocol).
-
--   :lucide-cpu: **Fast Bioinformatics Tooling**
-
-    ---
-
-    Building ergonomic, high-throughput command-line tools and Python/Rust libraries ([pyfgs](projects/pyfgs.md), [rammappy](projects/rammappy.md), [bart](projects/bart.md), [eris](projects/eris.md)) using modern data-oriented architectures like Polars.
-
--   :lucide-users: **Open Collaborations**
-
-    ---
-
-    Always keen to collaborate on *in silico* serotyping databases, bacterial glycan structure curation, and vaccine target discovery for global priority pathogens.
-
+<div class="swiss-focus-grid">
+  <div class="swiss-focus-cell">
+    <span>01 // SURFACE ANTIGENS</span>
+    <h3>In Silico Serotyping</h3>
+    <p>Lead architect of <a href="../projects/kaptive/">Kaptive 3</a>, a software engine and curated reference locus ecosystem for rapid K and O polysaccharide typing across priority Gram-negative pathogens.</p>
+  </div>
+  <div class="swiss-focus-cell">
+    <span>02 // RESISTANCE &amp; VIRULENCE</span>
+    <h3>AMR &amp; Iron Transport</h3>
+    <p>Investigating siderophore receptors (<a href="../projects/sideroscanner/">SideroScanner</a>), plasmid defense systems, and evolutionary pathways driving cefiderocol resistance and hypervirulence.</p>
+  </div>
+  <div class="swiss-focus-cell">
+    <span>03 // SYSTEMS BIOINFORMATICS</span>
+    <h3>Python &amp; Rust Tooling</h3>
+    <p>Authoring zero-overhead Rust/PyO3 extensions and data-oriented tools (<a href="../projects/pyfgs/">pyfgs</a>, <a href="../projects/rammappy/">rammappy</a>, <a href="../projects/bart/">bart</a>, <a href="../projects/eris/">eris</a>) built for modern Polars and HPC pipelines.</p>
+  </div>
+  <div class="swiss-focus-cell">
+    <span>04 // OPEN SCIENCE</span>
+    <h3>Curated Databases</h3>
+    <p>Collaborating internationally on bacterial glycan structure curation, sero-epidemiology, and maternal/neonatal sepsis vaccine target discovery.</p>
+  </div>
 </div>
 
----
+## Technical Stack
 
-## 💻 Tech Stack & Tooling
-
-<div class="tech-stack-section" markdown>
-
-**Languages & Core**
-:   `Python` • `Rust` • `R` • `Bash` • `SQL`
+**Languages & Runtime**
+:   `Python` · `Rust` · `R` · `POSIX Shell` · `SQL`
 
 **Data & Scientific Computing**
-:   `Polars` • `NumPy` • `SciPy` • `Pandas` • `scikit-learn` • `PyTorch` • `Biopython` • `PyO3`
+:   `Polars` · `PyO3` · `NumPy` · `SciPy` · `scikit-learn` · `PyTorch` · `Biopython`
 
-**Visualisation & Apps**
-:   `Matplotlib` • `Plotly` • `Seaborn` • `ggplot2` • `Shiny` • `Streamlit` • `FastAPI`
+**Visualisation & Interfaces**
+:   `Matplotlib` · `ggplot2` · `Plotly` · `Shiny` · `FastAPI`
 
-**Workflows & Reproducibility**
-:   `Nextflow` • `Snakemake` • `uv` • `Git` • `GitHub Actions` • `Docker / Apptainer` • `Linux / HPC`
+**Infrastructure & Reproducibility**
+:   `uv` · `Nextflow` · `Snakemake` · `GitHub Actions` · `Apptainer / Docker` · `Linux HPC`
 
-</div>
+## Correspondence & Profiles
 
----
-
-## 🌐 Connect & Elsewhere
-
-- **GitHub:** [@tomdstanton](https://github.com/tomdstanton)
+- **GitHub:** [github.com/tomdstanton](https://github.com/tomdstanton)
+- **Publications:** [OpenAlex Profile](https://openalex.org/authors/A5025916428) · [Publications Index](bib.md)
 - **Bluesky:** [@tomstantonmicro.bsky.social](https://bsky.app/profile/tomstantonmicro)
-- **LinkedIn:** [in/tomdstanton](https://linkedin.com/in/tomdstanton)
-- **X (Twitter):** [@tomstantonmicro](https://x.com/tomstantonmicro)
-- **OpenAlex / Publications:** [OpenAlex Author Profile](https://openalex.org/authors/A5025916428) • [Publications Tab](bib.md)
-- **Strava:** [Athlete #38105733](https://www.strava.com/athletes/38105733) — when I'm not writing Python or Rust, I'm usually out running, swimming, or cycling 🏃🏊🚴
+- **LinkedIn:** [linkedin.com/in/tomdstanton](https://linkedin.com/in/tomdstanton)
+- **X:** [@tomstantonmicro](https://x.com/tomstantonmicro)
+- **Endurance / Strava:** [strava.com/athletes/38105733](https://www.strava.com/athletes/38105733) — running, swimming, and cycling outside the lab.
 - **Email:** [tomdstanton@gmail.com](mailto:tomdstanton@gmail.com)

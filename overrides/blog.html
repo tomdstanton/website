@@ -1,42 +1,50 @@
 {#-
-  Home / Blog index template:
-  Renders the hero intro (`page.content`), the latest blog posts feed,
-  and the top 3 Featured Software Projects (by `weight`) on the first page.
+  Swiss Brutalist Editorial Home / Blog Index:
+  Renders the asymmetric masthead (`page.content`), numbered dispatches ledger,
+  and the 3-cell Featured Software architectural matrix.
 -#}
 {% extends "main.html" %}
 {% block container %}
-  <div class="md-content" data-md-component="content">
+  <div class="md-content swiss-home-container" data-md-component="content">
     <div class="md-content__inner">
-      <header class="md-typeset">
+      <header class="md-typeset swiss-masthead-wrap">
         <a id="__skip" tabindex="-1"></a>
         {{ page.content }}
       </header>
+
       {% if not page.url %}
-        <div class="md-typeset home-section-header">
-          <span class="section-eyebrow">Writing & Notes</span>
-          <h2>Latest Posts</h2>
+        <div class="swiss-section-bar">
+          <span class="swiss-section-index">01 // EDITORIAL DISPATCHES</span>
+          <h2 class="swiss-section-title">Writing &amp; Research Notes</h2>
+          <a href="{{ 'archive/2026/' | url }}" class="swiss-section-Action">ARCHIVE ↗</a>
         </div>
       {% endif %}
-      {% for post in posts %}
-        {% include "partials/post.html" %}
-      {% endfor %}
+
+      <div class="swiss-post-ledger">
+        {% for post in posts %}
+          {% set post_index = "%02d" | format(loop.index) %}
+          {% include "partials/post.html" %}
+        {% endfor %}
+      </div>
+
       {% if pagination %}
         {% block pagination %}
           {% include "partials/pagination.html" %}
         {% endblock %}
       {% endif %}
+
       {% if not page.url %}
         {% for item in nav.items if item.children and item.children[0].url == "projects/" %}
           {% set projects = (item.children | rejectattr("is_index") | sort(attribute="meta.weight"))[:3] %}
-          <section class="md-typeset featured-projects-section">
-            <div class="home-section-header">
-              <span class="section-eyebrow">Open Source Bioinformatics</span>
-              <h2>Featured Software</h2>
+          <section class="swiss-featured-software">
+            <div class="swiss-section-bar">
+              <span class="swiss-section-index">02 // OPEN-SOURCE SYSTEMS</span>
+              <h2 class="swiss-section-title">Selected Software</h2>
+              <a href="{{ 'projects/' | url }}" class="swiss-section-Action">ALL SOFTWARE ({{ (item.children | rejectattr("is_index") | list) | length }}) →</a>
             </div>
-            {% include "partials/project-cards.html" %}
-            <p class="featured-projects-more">
-              <a href="{{ 'projects/' | url }}" class="md-button">Explore all software & projects →</a>
-            </p>
+            <div class="md-typeset">
+              {% include "partials/project-cards.html" %}
+            </div>
           </section>
         {% endfor %}
       {% endif %}

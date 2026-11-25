@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.11"
+# requires-python = ">=3.14"
 # dependencies = []
 # ///
 
@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import urllib.error
 import urllib.request
 from collections import defaultdict
 from pathlib import Path
@@ -119,14 +120,14 @@ def format_pub_card(work: dict) -> str:
     if doi_url:
         doi_short = doi_url.replace("https://doi.org/", "")
         badges.append(
-            f'<a href="{doi_url}" class="pub-badge pub-badge--doi" target="_blank" rel="noopener">DOI: {doi_short}</a>'
+            f'<a href="{doi_url}" class="pub-badge pub-badge--doi" target="_blank" rel="noopener">DOI // {doi_short} ↗</a>'
         )
     if oa_url and oa_url != doi_url:
         badges.append(
-            f'<a href="{oa_url}" class="pub-badge pub-badge--oa" target="_blank" rel="noopener">Open Access</a>'
+            f'<a href="{oa_url}" class="pub-badge pub-badge--oa" target="_blank" rel="noopener">OPEN ACCESS ↗</a>'
         )
     if citations > 0:
-        label = "citation" if citations == 1 else "citations"
+        label = "CITATION" if citations == 1 else "CITATIONS"
         badges.append(
             f'<span class="pub-badge pub-badge--cite">{citations} {label}</span>'
         )
@@ -152,8 +153,8 @@ def format_pub_card(work: dict) -> str:
 
 def main() -> None:
     url = (
-        f"https://api.openalex.org/works?filter=author.id:{AUTHOR_ID},"
-        "type:article|proceedings-article&per-page=100"
+        f"https://api.openalex.org/works?filter=author.id:{AUTHOR_ID}"
+        "&per-page=200&mailto=tomdstanton@gmail.com"
     )
     if api_key := os.environ.get("OPENALEX_API_KEY"):
         url += f"&api_key={api_key}"
@@ -163,6 +164,10 @@ def main() -> None:
     try:
         with urllib.request.urlopen(req, timeout=20) as response:
             data = json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        print(f"Warning: OpenAlex HTTP {exc.code} ({body}). Keeping existing {BIB_PATH}.")
+        return
     except Exception as exc:
         print(f"Warning: Failed to fetch data from OpenAlex ({exc}). Keeping existing {BIB_PATH}.")
         return
@@ -209,12 +214,11 @@ def main() -> None:
         "description: Peer-reviewed publications and preprints by Tom Stanton, automatically synced from OpenAlex.",
         "author: Tom Stanton",
         "comments: false",
-        "icon: lucide/book-open-text",
         "---",
         "",
-        "# Publications 📚",
+        "# Publications",
         "",
-        f"Peer-reviewed articles and preprints automatically synced from [OpenAlex]({AUTHOR_ID}) (**{total_pubs}** publications • **{total_citations:,}** total citations).",
+        f"Peer-reviewed manuscripts and preprints indexed via [OpenAlex]({AUTHOR_ID}) (**{total_pubs}** works · **{total_citations:,}** citations).",
         "",
     ]
 

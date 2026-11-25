@@ -1,0 +1,22 @@
+[[repos]]
+repo = "builtin"
+hooks = [
+    { id = "trailing-whitespace" },
+    { id = "end-of-file-fixer" },
+    { id = "check-toml" },
+    { id = "check-yaml" },
+    { id = "check-merge-conflict" },
+]
+
+[[repos]]
+repo = "local"
+hooks = [
+    {
+        id = "zensical-build-strict",
+        name = "Zensical Check (Strict Build)",
+        language = "system",
+        entry = "uv run zensical build --strict",
+        pass_filenames = false,
+        files = "\\.(md|toml|yml|yaml|html|css|js)$",
+    },
+]

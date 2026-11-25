@@ -1,7 +1,7 @@
 append_unmatched: true
 nav:
-  - index.md
-  - projects
-  - bib.md
-  - tags.md
-  - about.md
+  - Home: index.md
+  - Software: projects
+  - Publications: bib.md
+  - Tags: tags.md
+  - About: about.md

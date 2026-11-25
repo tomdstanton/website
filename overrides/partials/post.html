@@ -1,0 +1,47 @@
+{#-
+  Swiss Brutalist Editorial Ledger Row for Blog Posts
+-#}
+<article class="md-post md-post--excerpt swiss-ledger-row">
+  <div class="swiss-ledger-meta">
+    <div class="swiss-ledger-num">
+      {% if post_index is defined %}{{ post_index }}{% else %}—{% endif %}
+    </div>
+    <time class="swiss-ledger-date" datetime="{{ post.config.date.created }}">
+      {{- post.config.date.created | date -}}
+    </time>
+    <div class="swiss-ledger-submeta">
+      {% if post.config.readtime %}
+        {% set time = post.config.readtime %}
+        <span>
+          {%- if time == 1 -%}{{ lang.t("readtime.one") }}{%- else -%}{{ lang.t("readtime.other") | replace("#", time) }}{%- endif -%}
+        </span>
+      {% endif %}
+      {% if post.categories %}
+        <span class="swiss-ledger-cats">
+          {% for category in post.categories %}
+            <a href="{{ category.url | url }}">{{ category.title }}</a>{% if not loop.last %} · {% endif %}
+          {% endfor %}
+        </span>
+      {% endif %}
+    </div>
+    {% if post.config.draft %}
+      <span class="swiss-draft-stamp">DRAFT</span>
+    {% endif %}
+  </div>
+
+  <div class="swiss-ledger-body">
+    <h3 class="swiss-ledger-title">
+      <a href="{{ post.url | url }}">{{ post.title }}</a>
+    </h3>
+    {% if post.meta and post.meta.description %}
+      <p class="swiss-ledger-deck">{{ post.meta.description }}</p>
+    {% else %}
+      <div class="md-typeset swiss-ledger-excerpt">
+        {{ post.content }}
+      </div>
+    {% endif %}
+    <a href="{{ post.url | url }}" class="swiss-read-link">
+      READ ENTRY <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</article>

@@ -29,18 +29,15 @@ jobs:
         with:
           enable-cache: true
 
+      - name: Run Prek Checks
+        run: uv run --locked prek run --all-files --skip zensical-build-strict
+
       - name: Sync OpenAlex Publications
         run: uv run --locked python scripts/fetch_bib.py
         env:
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
 
-      - name: Generate Social Preview Cards
-        run: uv run --locked python scripts/social_cards.py
-
-      - name: Audit Documentation (Zenzic)
-        run: uv run --locked zenzic check all
-
-      - name: Build Site (Strict)
+      - name: Build & Check Site (Strict)
         run: uv run --locked zensical build --strict
 
       - name: Custom Domain

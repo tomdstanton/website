@@ -10,7 +10,7 @@ tags:
   - Python
 ---
 
-# eris 🧬🍏✨
+# eris
 
 **eris** performs graph-aware contextual annotation of targeted genomic features, using assembly graph topology (GFA) and local gene synteny to resolve complex, fragmented, or repetitive bacterial loci.
 

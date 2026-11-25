@@ -1,19 +1,14 @@
 # Build artifacts
 site/
-docs/assets/social/
 
-# Python / uv / Zenzic
+# Python / uv / Zensical
 .venv/
 __pycache__/
 *.py[cod]
 .zensical/
-.zenzic.local.toml
-.zenzic_cache/
 .cache/
 
 # OS / Editor
 .DS_Store
 .idea/
 .vscode/
-.zenzic.local.toml
-.zenzic_cache/

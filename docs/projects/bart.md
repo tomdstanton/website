@@ -11,9 +11,9 @@ tags:
   - Python
 ---
 
-# bart 🧬🛹🦠
+# bart
 
-**bart** (*Bacterial Read Typer*) is a lightweight bioinformatics tool for typing targeted genomic loci directly from raw sequencing reads (Illumina short reads or Oxford Nanopore long reads) without waiting for full *de novo* genome assembly.
+**bart** (*Bacterial Read Typer*) is a lightweight bioinformatics engine for typing targeted genomic loci directly from raw sequencing reads (Illumina short reads or Oxford Nanopore long reads) without waiting for full *de novo* genome assembly.
 
 ## Key Capabilities
 

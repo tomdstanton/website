@@ -1,13 +1,12 @@
 ---
 title: Tags
-description: Blog posts and open-source software projects grouped by topic tag.
-icon: lucide/tags
+description: Subject index of editorial dispatches and open-source software projects.
 hide:
   - toc
 ---
 
-# Tags
+# Subject Index
 
-Browse blog posts, tutorials, and open-source bioinformatics software projects across [Bytes and Bacteria](index.md) grouped by research topic, programming language, and pathogen focus. You can also explore the full [Software](projects/index.md) portfolio, [Publications](bib.md), or [About](about.md) page directly.
+Editorial dispatches and open-source bioinformatics software indexed by research domain, programming language, and target organism. Browse the [Software](projects/index.md) matrix or [Publications](bib.md) ledger directly.
 
 <!-- material/tags -->

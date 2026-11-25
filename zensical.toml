@@ -1,6 +1,6 @@
 [project]
-site_name = "Bytes and Bacteria"
-site_description = "Microbial bioinformatics, genomics & open-source software by Tom Stanton"
+site_name = "Bytes & Bacteria"
+site_description = "Microbial bioinformatics, pathogen genomics & open-source software by Tom Stanton"
 site_url = "https://tomdstanton.com/"
 site_author = "Tom Stanton"
 repo_url = "https://github.com/tomdstanton/website"
@@ -8,7 +8,7 @@ repo_name = "tomdstanton/website"
 edit_uri = "edit/main/docs/"
 docs_dir = "docs"
 site_dir = "site"
-copyright = 'Copyright &copy; 2026 <a href="https://tomdstanton.com" target="_blank" rel="noopener">Tom Stanton</a> • Built with Zensical'
+copyright = '© 2026 <a href="https://tomdstanton.com" target="_blank" rel="noopener">Tom Stanton</a> — Melbourne, AU'
 extra_css = ["stylesheets/extra.css"]
 extra_javascript = [
   "javascripts/github-stars.js",
@@ -21,7 +21,7 @@ custom_dir = "overrides"
 language = "en"
 logo = "assets/logo.png"
 favicon = "assets/logo.png"
-font.text = "Manrope"
+font.text = "Plus Jakarta Sans"
 font.code = "IBM Plex Mono"
 icon.repo = "fontawesome/brands/github"
 features = [
@@ -33,7 +33,6 @@ features = [
   "content.code.select",
   "content.footnote.tooltips",
   "content.tabs.link",
-  "header.autohide",
   "navigation.footer",
   "navigation.indexes",
   "navigation.instant",
@@ -50,20 +49,20 @@ features = [
   "toc.integrate",
 ]
 
-# Dark by default, with a toggle to light and system preference
-[[project.theme.palette]]
-scheme = "slate"
-primary = "custom"
-accent = "custom"
-toggle.icon = "lucide/moon"
-toggle.name = "Switch to light mode"
-
+# Classic Swiss Brut: Warm archival paper default, with toggle to Obsidian Dark
 [[project.theme.palette]]
 scheme = "default"
 primary = "custom"
 accent = "custom"
 toggle.icon = "lucide/sun"
 toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+scheme = "slate"
+primary = "custom"
+accent = "custom"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
 
 [project.extra]
 generator = false
@@ -128,6 +127,10 @@ date_from_meta.as_creation = "date.created"
 
 [project.plugins.glightbox]
 
+[project.plugins.social]
+cards_layout_options.background_color = "#F7F7F5"
+cards_layout_options.color = "#0A0A0A"
+
 [project.markdown_extensions]
 abbr = {}
 admonition = {}
@@ -135,7 +138,7 @@ attr_list = {}
 def_list = {}
 footnotes = {}
 md_in_html = {}
-toc = { permalink = true, title = "On this page" }
+toc = { permalink = true, title = "Contents" }
 "pymdownx.arithmatex" = { generic = true }
 "pymdownx.betterem" = {}
 "pymdownx.details" = {}
