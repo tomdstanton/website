@@ -138,15 +138,8 @@ Describe **{title}**, its motivation, and key features here.
 """
     target.write_text(content, encoding="utf-8")
 
-    nav_file = DOCS / "projects" / ".nav.yml"
-    if nav_file.exists():
-        nav_text = nav_file.read_text(encoding="utf-8")
-        entry = f"  - {resolved_slug}.md"
-        if entry not in nav_text:
-            nav_file.write_text(nav_text.rstrip() + f"\n{entry}\n", encoding="utf-8")
-
     rel = str(target.relative_to(ROOT))
-    print(f"✔ Created project page: {rel}")
+    print(f"✔ Created project page: {rel} (auto-ordered by weight={weight})")
     return {"path": rel, "slug": resolved_slug}
 
 

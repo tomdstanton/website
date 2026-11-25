@@ -33,11 +33,14 @@ features = [
   "content.code.select",
   "content.footnote.tooltips",
   "content.tabs.link",
+  "content.tooltips",
   "navigation.footer",
   "navigation.indexes",
   "navigation.instant",
   "navigation.instant.prefetch",
+  "navigation.instant.preview",
   "navigation.instant.progress",
+  "navigation.prune",
   "navigation.tabs",
   "navigation.tabs.sticky",
   "navigation.top",
@@ -123,13 +126,57 @@ date_from_meta.as_creation = "date.created"
 
 [project.plugins.meta]
 
+[project.plugins.meta-descriptions]
+trim = true
+
 [project.plugins.awesome-nav]
+
+[project.plugins.mkdocs-nav-weight]
+index_weight = -10
+
+[project.plugins.gh-admonitions]
+
+[project.plugins.table-reader]
+data_path = "docs"
+
+[project.plugins.git-revision-date-localized]
+type = "iso_date"
+enable_creation_date = true
+fallback_to_build_date = true
+strict = false
+exclude = ["index.md", "bib.md", "tags.md", "projects/index.md"]
+
+[project.plugins.llmstxt]
+markdown_description = "Microbial bioinformatics, pathogen genomics, and open-source Rust/Python research software by Dr. Tom Stanton (Monash University)."
+full_output = "llms-full.txt"
+
+[project.plugins.llmstxt.sections]
+"Editorial Dispatches" = ["posts/*.md", "posts/**/*.md"]
+"Open-Source Software" = ["projects/*.md"]
+"Publications & Dossier" = ["bib.md", "about.md"]
 
 [project.plugins.glightbox]
 
 [project.plugins.social]
 cards_layout_options.background_color = "#F7F7F5"
 cards_layout_options.color = "#0A0A0A"
+
+[project.plugins.privacy]
+assets_include = [
+  "fonts.googleapis.com/*",
+  "fonts.gstatic.com/*",
+  "avatars.githubusercontent.com/*",
+  "unpkg.com/glightbox*",
+]
+
+[project.plugins.optimize]
+optimize_png = false
+print_gain_summary = true
+
+[project.plugins.minify]
+minify_html = true
+minify_css = true
+minify_js = true
 
 [project.markdown_extensions]
 abbr = {}
@@ -152,3 +199,4 @@ toc = { permalink = true, title = "Contents" }
 "pymdownx.superfences" = { custom_fences = [ { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" } ] }
 "pymdownx.tabbed" = { alternate_style = true }
 "pymdownx.tasklist" = { custom_checkbox = true }
+"zensical.extensions.preview" = { sources = { include = ["posts/*", "projects/*", "about.md"], exclude = ["projects/index.md"] }, targets = { include = ["posts/*", "projects/*", "bib.md", "about.md"] } }

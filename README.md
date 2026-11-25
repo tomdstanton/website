@@ -24,18 +24,21 @@ uv run prek run --all-files
 ## Adding Content
 
 ### 1. New Blog Post
-Blog posts inside `docs/posts/` are discovered automatically by Zensical's `blog` plugin — no config edits needed!
+Blog posts inside `docs/posts/` are discovered automatically by Zensical's `blog` plugin — no config edits needed! Posts support:
+- **GitHub/Obsidian callouts:** `> [!NOTE]`, `> [!IMPORTANT]`, `> [!WARNING]`
+- **Direct CSV/TSV tables:** `{{ read_csv('path/to/benchmarks.csv') }}`
+- **Instant hover previews:** Internal links between posts and software pages render hover preview cards automatically.
 
 ```bash
 # Create a single-file post (docs/posts/<slug>.md)
 clio scripts/new.py post "Vectorized Bioinformatics with Polars" --tags Polars Python Bioinformatics
 
-# Or create a folder bundle for co-located images (docs/posts/<slug>/index.md)
+# Or create a folder bundle for co-located images/CSVs (docs/posts/<slug>/index.md)
 clio scripts/new.py post "Deep Dive into Kaptive 3" --bundle --tags Kaptive Genomics
 ```
 
 ### 2. New Software Project
-Project pages live in `docs/projects/*.md`. The top 3 projects (lowest `weight` in front matter) are automatically featured on the Home page, and all projects appear on the **Software** tab with live GitHub star counts.
+Project pages live in `docs/projects/*.md` and sort automatically by `weight` via `mkdocs-nav-weight` (no `.nav.yml` maintenance needed). The top 3 projects (lowest `weight`) are featured on the Home page, and all projects appear on the **Software** tab with live GitHub star counts.
 
 ```bash
 clio scripts/new.py project "Kaptive Plot" \
@@ -46,8 +49,13 @@ clio scripts/new.py project "Kaptive Plot" \
 ```
 
 ### 3. New Top-Level Navigation Tab
-Navigation is managed via `docs/.nav.yml` (powered by `awesome-nav`).
+Top-level navigation is managed via `docs/.nav.yml` (`awesome-nav`).
 
 ```bash
 clio scripts/new.py tab "Talks" --icon lucide/presentation
 ```
+
+## Generated Outputs
+- **RSS / JSON Feeds:** `/feed_rss_created.xml`, `/feed_json_created.json`
+- **AI / LLM Discovery:** `/llms.txt` and `/llms-full.txt`
+- **Self-Hosted Assets:** Fonts and external assets are cached & self-hosted under `assets/external/` at build time (`privacy` + `optimize` + `minify`).

@@ -24,10 +24,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history required for git-revision-date-localized provenance stamps
+          fetch-depth: 0
 
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
+
+      - name: Cache Zensical Privacy & Image Optimization Assets
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: zensical-cache-${{ runner.os }}-${{ hashFiles('zensical.toml', 'overrides/main.html', 'docs/assets/**') }}
+          restore-keys: |
+            zensical-cache-${{ runner.os }}-
 
       - name: Run Prek Checks
         run: uv run --locked prek run --all-files --skip zensical-build-strict

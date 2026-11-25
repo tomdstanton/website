@@ -79,7 +79,9 @@
 .md-typeset details,
 .md-typeset table:not([class]),
 .md-tag,
-.md-nav__link {
+.md-nav__link,
+.md-tooltip,
+.md-tooltip2 {
   border-radius: 0 !important;
 }
 
@@ -968,7 +970,26 @@ body {
   color: var(--swiss-ink-muted);
 }
 
-/* --- CODE BLOCKS, ADMONITIONS & FOOTER --- */
+/* --- CODE BLOCKS, ADMONITIONS, PREVIEWS, PROVENANCE & FOOTER --- */
+.md-tooltip,
+.md-tooltip2 {
+  background: var(--swiss-bg) !important;
+  color: var(--swiss-ink) !important;
+  border: 1px solid var(--swiss-rule) !important;
+}
+
+.md-source-file {
+  margin-top: 2.5rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--swiss-rule-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--swiss-ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
 .md-typeset .highlight {
   border: 1px solid var(--swiss-rule);
   background: var(--md-code-bg-color);
