@@ -1,18 +1,74 @@
 {#-
-  Copy of the built-in partials/content.html that adds project links
-  (GitHub repository, PyPI, Docs) to project pages that set them in front matter.
+  Article & Software Page Content Template:
+  - Renders project specification bar on Software pages
+  - Renders scholarly metadata strip (DOI · ORCID · CC BY 4.0) & bottom "Cite This Dispatch" box on Blog Posts
 -#}
 {% include "partials/actions.html" %}
 {% if "<h1" not in page.content %}
   <h1 id="__skip">{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
+
 {% if page.meta and (page.meta.github_url or page.meta.pypi or page.meta.docs_url) %}
   {% set project = page %}
   <div class="project-page-banner">
     {% include "partials/project-links.html" %}
   </div>
 {% endif %}
+
+{% if page.meta and page.meta.date %}
+  {% set clean_doi = (page.meta.doi | replace("https://doi.org/", "")) if page.meta.doi else "" %}
+  <div class="swiss-post-spec-bar">
+    {% if clean_doi %}
+      <a href="https://doi.org/{{ clean_doi }}" class="swiss-doi-stamp swiss-doi-stamp--active" target="_blank" rel="noopener">
+        DOI // {{ clean_doi }} ↗
+      </a>
+    {% else %}
+      <a href="#" class="swiss-doi-stamp swiss-doi-stamp--active" data-rogue-doi-url="{{ page.canonical_url }}" target="_blank" rel="noopener" hidden>
+        DOI // <span data-rogue-doi-text></span> ↗
+      </a>
+    {% endif %}
+    <a href="https://orcid.org/{{ config.extra.orcid }}" class="swiss-spec-link" target="_blank" rel="noopener">
+      ORCID // {{ config.extra.orcid }} ↗
+    </a>
+    <a href="https://creativecommons.org/licenses/by/4.0/" class="swiss-spec-link" target="_blank" rel="license noopener">
+      LICENSE // CC BY 4.0 ↗
+    </a>
+  </div>
+{% endif %}
+
 {{ page.content }}
+
+{% if page.meta and page.meta.date %}
+  {% set pub_date = (page.config.date.created | string)[:10] %}
+  {% set pub_year = pub_date[:4] %}
+  {% set clean_doi = (page.meta.doi | replace("https://doi.org/", "")) if page.meta.doi else "" %}
+  <aside
+    class="swiss-cite-box"
+    data-cite-box
+    data-cite-title="{{ page.title | e }}"
+    data-cite-year="{{ pub_year }}"
+    data-cite-date="{{ pub_date }}"
+    data-cite-slug="{{ page.meta.slug or (page.url | trim('/') | split('/') | last) }}"
+    data-cite-url="{{ page.canonical_url }}"
+    data-cite-doi="{{ clean_doi }}"
+  >
+    <div class="swiss-cite-header">
+      <span>CITATION // ARCHIVAL RECORD (CC BY 4.0)</span>
+      <button type="button" class="swiss-copy-btn" data-copy-bibtex>
+        COPY BIBTEX
+      </button>
+    </div>
+    <p class="swiss-cite-text">
+      Stanton TD. {{ page.title }}. <em>{{ config.site_name }}</em>. {{ pub_year }}.
+      {% if clean_doi %}
+        <a href="https://doi.org/{{ clean_doi }}" target="_blank" rel="noopener">https://doi.org/{{ clean_doi }}</a>
+      {% else %}
+        <a href="{{ page.canonical_url }}" data-cite-doi-link>{{ page.canonical_url }}</a>
+      {% endif %}
+    </p>
+  </aside>
+{% endif %}
+
 {% include "partials/tags.html" %}
 {% include "partials/source-file.html" %}
 {% include "partials/feedback.html" %}

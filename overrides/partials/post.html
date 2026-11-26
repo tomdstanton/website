@@ -1,5 +1,5 @@
 {#-
-  Swiss Brutalist Editorial Ledger Row for Blog Posts
+  Swiss Brutalist Editorial Ledger Row for Blog Posts (with Rogue Scholar / front-matter DOI stamp)
 -#}
 <article class="md-post md-post--excerpt swiss-ledger-row">
   <div class="swiss-ledger-meta">
@@ -24,6 +24,16 @@
         </span>
       {% endif %}
     </div>
+    {% if post.meta and post.meta.doi %}
+      {% set clean_doi = post.meta.doi | replace("https://doi.org/", "") %}
+      <a href="https://doi.org/{{ clean_doi }}" class="swiss-doi-stamp" target="_blank" rel="noopener">
+        DOI // {{ clean_doi }} ↗
+      </a>
+    {% else %}
+      <a href="#" class="swiss-doi-stamp" data-rogue-doi-url="{{ config.site_url ~ post.url }}" target="_blank" rel="noopener" hidden>
+        DOI // <span data-rogue-doi-text></span> ↗
+      </a>
+    {% endif %}
     {% if post.config.draft %}
       <span class="swiss-draft-stamp">DRAFT</span>
     {% endif %}

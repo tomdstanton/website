@@ -4,5 +4,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="alternate" type="application/rss+xml" title="{{ config.site_name }}" href="{{ 'feed_rss_created.xml' | url }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ config.site_name }} (RSS)" href="{{ 'feed_rss_created.xml' | url }}">
+  <link rel="alternate" type="application/feed+json" title="{{ config.site_name }} (JSON Feed)" href="{{ 'feed_json_created.json' | url }}">
+  <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+  {#- Highwire Press / Zotero / Google Scholar metadata for blog dispatches -#}
+  {% if page and page.meta and page.meta.date %}
+    <meta name="citation_title" content="{{ page.title }}">
+    <meta name="citation_author" content="Stanton, Tom D.">
+    <meta name="citation_author_institution" content="Monash University">
+    <meta name="citation_author_orcid" content="https://orcid.org/{{ config.extra.orcid }}">
+    <meta name="citation_journal_title" content="{{ config.site_name }}">
+    <meta name="citation_publication_date" content="{{ (page.config.date.created | string)[:10] | replace('-', '/') }}">
+    {% if page.canonical_url %}
+      <meta name="citation_public_url" content="{{ page.canonical_url }}">
+      <meta name="citation_fulltext_html_url" content="{{ page.canonical_url }}">
+    {% endif %}
+    {% if page.meta.doi %}
+      {% set clean_doi = page.meta.doi | replace("https://doi.org/", "") %}
+      <meta name="citation_doi" content="{{ clean_doi }}">
+    {% endif %}
+  {% endif %}
 {% endblock %}

@@ -36,6 +36,7 @@ def post(
     *,
     slug: str | None = None,
     description: str | None = None,
+    doi: str | None = None,
     tags: list[str] | None = None,
     categories: list[str] | None = None,
     bundle: bool = False,
@@ -59,13 +60,14 @@ def post(
     tags_yaml = "\n".join(f"  - {t}" for t in resolved_tags)
     cats_yaml = "\n".join(f"  - {c}" for c in resolved_cats)
     draft_line = "draft: true\n" if draft else ""
+    doi_line = f"doi: {doi}\n" if doi else ""
 
     content = f"""---
 {draft_line}date: {today}
 slug: {resolved_slug}
 title: "{title}"
 description: "{description or title}"
-categories:
+{doi_line}categories:
 {cats_yaml}
 tags:
 {tags_yaml}

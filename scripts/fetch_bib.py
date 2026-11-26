@@ -65,6 +65,22 @@ def format_vancouver_authors(authorships: list[dict]) -> str:
     return ", ".join(formatted)
 
 
+def is_self_blog_post(work: dict) -> bool:
+    """Exclude Rogue Scholar / tomdstanton.com blog posts from Publications."""
+    doi = (work.get("doi") or "").lower()
+    if "10.59350/" in doi or "10.53731/" in doi:
+        return True
+    primary_location = work.get("primary_location") or {}
+    landing_url = (primary_location.get("landing_page_url") or "").lower()
+    source = primary_location.get("source") or {}
+    source_name = (source.get("display_name") or "").lower()
+    if "tomdstanton.com" in landing_url or "rogue-scholar.org" in landing_url:
+        return True
+    if "bytes & bacteria" in source_name or "bytes and bacteria" in source_name:
+        return True
+    return False
+
+
 def score_work(work: dict) -> tuple[int, int, int]:
     """Score a work to pick the canonical journal version when deduplicating."""
     has_doi = 1 if work.get("doi") else 0
@@ -180,6 +196,8 @@ def main() -> None:
     # Deduplicate by normalized title, keeping the highest-scored record
     deduped: dict[str, dict] = {}
     for work in raw_works:
+        if is_self_blog_post(work):
+            continue
         title = work.get("title")
         if not title:
             continue

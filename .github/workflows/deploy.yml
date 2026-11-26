@@ -48,6 +48,9 @@ jobs:
         env:
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
 
+      - name: Sync Rogue Scholar Blog DOIs
+        run: uv run --locked python scripts/sync_dois.py
+
       - name: Build & Check Site (Strict)
         run: uv run --locked zensical build --strict
 

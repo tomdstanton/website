@@ -1,6 +1,17 @@
-MIT License
+# Licensing
 
-Copyright (c) 2025 anydigital
+This repository is dual-licensed to support open scholarly archiving (including [Rogue Scholar](https://rogue-scholar.org/)) alongside open-source software reuse:
+
+1. **Editorial Prose & Blog Posts (`docs/posts/`, `docs/about.md`, written articles):**
+   Licensed under the **[Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)**, Copyright © 2026 Tom Stanton.
+2. **Source Code, Templates, Stylesheets & Scripts (`scripts/`, `overrides/`, `docs/stylesheets/`, `docs/javascripts/`, configuration files):**
+   Licensed under the **MIT License** below, Copyright © 2026 Tom Stanton.
+
+---
+
+## MIT License (Source Code & Scripts)
+
+Copyright (c) 2026 Tom Stanton
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -55,7 +55,11 @@ Top-level navigation is managed via `docs/.nav.yml` (`awesome-nav`).
 clio scripts/new.py tab "Talks" --icon lucide/presentation
 ```
 
-## Generated Outputs
-- **RSS / JSON Feeds:** `/feed_rss_created.xml`, `/feed_json_created.json`
+## Generated Outputs & Scholarly Archiving (Rogue Scholar DOIs)
+- **Full-Text Syndication Feeds:** `/feed_json_created.json` (JSON Feed 1.1) and `/feed_rss_created.xml` (RSS 2.0) include full-text HTML (`abstract_chars_count = -1`) and `CC BY 4.0` licensing for automatic DOI minting via **[Rogue Scholar](https://rogue-scholar.org/)**.
+- **One-Time Rogue Scholar Activation:**
+  1. Sign in at [rogue-scholar.org](https://rogue-scholar.org/) with your ORCID (`0000-0002-8898-4432`).
+  2. Submit your blog feed URL: `https://tomdstanton.com/feed_json_created.json` (or `https://tomdstanton.com/feed_rss_created.xml`).
+  3. Every new post pushed to `main` automatically receives a Crossref DOI — resolved live on the site via `javascripts/rogue-scholar.js` and stamped into static builds via `scripts/sync_dois.py` (or override manually with `doi: ...` in front matter).
 - **AI / LLM Discovery:** `/llms.txt` and `/llms-full.txt`
 - **Self-Hosted Assets:** Fonts and external assets are cached & self-hosted under `assets/external/` at build time (`privacy` + `optimize` + `minify`).
